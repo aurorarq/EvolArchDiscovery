@@ -39,15 +39,22 @@ As explained in the paper, the three design metrics used to evaluate the design 
 
 *   ICD: Intra-modular Coupling Density (to be maximized)
 
+![ICD Equation](fig/Sbse-rrv14-eq1-icd.jpg)
+
 *   ERP: External Relations Penalty (to be minimized)
 
+![ERP Equation](fig/Sbse-rrv14-eq2-erp.jpg)
+
 *   GCR: Groups/Components Ratio (to be minimized)
+
+![GCR Equation](fig/Sbse-rrv14-eq3-gcr.jpg)
 
 Firstly, we calculate each of these metrics for the architectural specification created by the software engineer. The ICD metric requires the number of classes, internal relationships and external relationships within each component composing the architecture:
 
 
 Then, the ICD metric is calculated as follows:
 
+```
 ICD(Dataset)= ((59-20)/59)\*(20/(20+1)) = 0.63
 
 ICD(Algorithm) = ((59-14)/59)\*(13/(13+2)) = 0.66
@@ -57,26 +64,33 @@ ICD(Column) = ((59-19)/59)\*(18/(18+1)) = 0.64
 ICD(Datatypes) = ((59-6)/59)\*(4/(4+1)) = 0.72
 
 ICD = (0.63+0.66+0.64+0.72)/4 = 0.66
+```
 
 Now, the number of external relationships between each pair of components has to be counted in order to calculate the ERP metric:
 
 Then, the ERP value is calculated as follows:
 
+```
 ERP = (3\*1)+(3\*1) = 6.00
+```
 
 Finally, the GCR metric is obtained considering the number of groups of classes in each component:
 
 Then, the GCR value is calculated as follows:
 
+```
 GCR = (1+1+1+2)/4 = 1.25
+```
 
 In short, the resulting values of these metrics with respect to the original design are the following:
 
+```
 ICD=0.66
 
 ERP=6.00
 
 GCR=1.25
+```
 
 #### **Evolutionary solution for the architecture discovery problem**
 
@@ -87,11 +101,13 @@ Figure 2. Architectural solution produced by the evolutionary algorithm for Data
 
 Its values for each individual metric are the following: (these values have been automatically computed and returned by the algorithm):
 
+```
 ICD = 0.62
 
 ERP = 18.00
 
 GCR = 1.67
+```
 
 From the evolutionary perspective, notice that the greatest difference found between two values is observed for the ERP metric. In this case, we should consider two additional aspects that may influence in this specific measure:
 
