@@ -1,0 +1,83 @@
+<experiment>
+<process algorithm-type="net.sf.jclec.sbse.cl2cmp.ranking.RankingAlgorithm">
+		
+		<rand-gen-factory multi="true">
+			<rand-gen-factory type="net.sf.jclec.util.random.RanecuFactory" seed="123456789"/>
+			<rand-gen-factory type="net.sf.jclec.util.random.RanecuFactory" seed="234567891"/>
+		 </rand-gen-factory>
+		
+		<population-size>50</population-size>
+		<max-of-evaluations>2500</max-of-evaluations>
+
+		<species type="net.sf.jclec.sbse.cl2cmp.ranking.RankingSpecies">
+			<min-of-components>2</min-of-components>
+			<max-of-components>8</max-of-components>
+		</species>
+		
+		<evaluator type="net.sf.jclec.sbse.cl2cmp.ranking.RankingEvaluator">
+			<model>
+				<num-of-classes>59</num-of-classes>
+				<path>data/datapro4j.csv</path>
+			</model>
+			<uml-relation-weights>
+				<assoc-weight>2</assoc-weight>
+				<depen-weight>1</depen-weight>
+				<compos-weight>3</compos-weight>
+				<gener-weight>5</gener-weight>
+			</uml-relation-weights>
+			<design-metric>	
+				<ICD>true</ICD>	
+				<ERP>true</ERP>
+				<GCR>true</GCR>
+			</design-metric>
+		</evaluator>
+		
+		<provider type="net.sf.jclec.sbse.cl2cmp.ranking.RankingTreeCreator"/>
+		
+		<parents-selector type="net.sf.jclec.selector.TournamentSelector"> 
+			<tournament-size>2</tournament-size>
+		</parents-selector>
+		<replacement-strategy>5</replacement-strategy>
+		
+		<base-mutator type="net.sf.jclec.sbse.cl2cmp.ranking.RankingMutator" probability-invalids="true">
+			<mutator type="net.sf.jclec.sbse.cl2cmp.mut.AddComponentMutator" weight="0.2" random="false"/>
+			<mutator type="net.sf.jclec.sbse.cl2cmp.mut.RemoveComponentMutator" weight="0.2" random="false" />
+			<mutator type="net.sf.jclec.sbse.cl2cmp.mut.MergeComponentsMutator" weight="0.2" random="false"/>
+		 	<mutator type="net.sf.jclec.sbse.cl2cmp.mut.SplitComponentMutator" weight="0.2" random="false"/>
+			<mutator type="net.sf.jclec.sbse.cl2cmp.mut.MoveClassMutator" weight="0.2" random="true"/>
+		</base-mutator>
+		
+		<!-- LISTENERS -->
+		<!-- <listener type="net.sf.jclec.sbse.cl2cmp.ranking.listener.RankingPopulationReporter">
+			<report-frequency>10</report-frequency>
+		</listener> -->
+		
+		
+		
+		<!-- <listener type="net.sf.jclec.sbse.cl2cmp.ranking.listener.RankingBestReducedReporter">
+			<number-of-executions>5</number-of-executions>
+		</listener> -->
+		
+		<!-- <listener type="net.sf.jclec.sbse.cl2cmp.ranking.listener.RankingBestReporter">
+			<report-frequency>10</report-frequency>
+		</listener> -->
+		
+		<!-- <listener type="net.sf.jclec.sbse.cl2cmp.ranking.listener.RankingPopulationReducedReporter">
+			<number-of-executions>5</number-of-executions>
+		</listener> -->
+		
+		<!-- <listener type="net.sf.jclec.sbse.cl2cmp.ranking.listener.RankingBestFileReporter">
+			<report-frequency>100000</report-frequency>
+		</listener> -->
+		
+		<!-- <listener type="net.sf.jclec.sbse.cl2cmp.ranking.listener.RankingBestReducedReporter">
+		 	<number-of-executions>5</number-of-executions>
+		 </listener> -->
+		 
+		 <listener type="net.sf.jclec.sbse.cl2cmp.ranking.listener.RankingEvaluationsReporter">
+		 	<number-of-executions>2</number-of-executions>
+		 	<report-frequency>100</report-frequency>
+		 </listener>
+		
+	</process>
+</experiment>

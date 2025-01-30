@@ -1,0 +1,63 @@
+<experiment>
+<process algorithm-type="net.sf.jclec.sbse.cl2cmp.ranking.RankingAlgorithm">
+		
+		<rand-gen-factory multi="true"> -->
+			<rand-gen-factory type="net.sf.jclec.util.random.RanecuFactory" seed="123456789"/>
+			<rand-gen-factory type="net.sf.jclec.util.random.RanecuFactory" seed="666666666"/>
+		</rand-gen-factory>
+		
+		<population-size>5</population-size>
+		<max-of-generations>10</max-of-generations>
+
+		<species type="net.sf.jclec.sbse.cl2cmp.ranking.RankingSpecies">
+			<min-of-components>2</min-of-components>
+			<max-of-components>4</max-of-components>
+		</species>
+		
+		<provider type="net.sf.jclec.sbse.cl2cmp.ranking.RankingTreeCreator"/>
+			
+		<evaluator type="net.sf.jclec.sbse.cl2cmp.ranking.RankingEvaluator">
+			
+			<model>
+				<num-of-classes>6</num-of-classes>
+				<path>data/ejemplo3.csv</path>
+			</model>
+			
+			<uml-relation-weights>
+				<assoc-weight>2</assoc-weight>
+				<depen-weight>1</depen-weight>
+				<compos-weight>3</compos-weight>
+				<gener-weight>5</gener-weight>
+			</uml-relation-weights>
+			
+			<design-metric>	
+				<ICD>true</ICD>	
+				<ERP>true</ERP>
+				<GCR>true</GCR>
+			</design-metric>
+		</evaluator>
+		
+		<replacement-strategy>5</replacement-strategy>
+		
+		<parents-selector type="net.sf.jclec.selector.RouletteSelector" />
+		
+		<base-mutator type="net.sf.jclec.sbse.cl2cmp.Cl2CmpMutator" probability-invalids="true">
+			<mutator type="net.sf.jclec.sbse.cl2cmp.mut.AddComponentMutator" weight="0.2" random="false"/>
+			<mutator type="net.sf.jclec.sbse.cl2cmp.mut.RemoveComponentMutator" weight="0.3" random="false" />
+			<mutator type="net.sf.jclec.sbse.cl2cmp.mut.MergeComponentsMutator" weight="0.2" random="false"/>
+		 	<mutator type="net.sf.jclec.sbse.cl2cmp.mut.SplitComponentMutator" weight="0.1" random="false"/> 
+			<mutator type="net.sf.jclec.sbse.cl2cmp.mut.MoveClassMutator" weight="0.2" random="true"/>
+		</base-mutator>
+		
+		<!-- Listeners -->
+		
+		<listener type="net.sf.jclec.sbse.cl2cmp.ranking.listener.RankingBestFileReporter">
+			<report-frequency>100000</report-frequency>
+		</listener>
+		
+		<listener type="net.sf.jclec.sbse.cl2cmp.ranking.listener.RankingBestReducedReporter">
+		 	<number-of-executions>2</number-of-executions>
+		 </listener>
+		 		
+	</process>
+</experiment>
