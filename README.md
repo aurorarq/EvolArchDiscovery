@@ -32,7 +32,7 @@ Therefore, even when both approaches should be carefully compared, it is a reall
 
 Figure 1 shows the original design of the Datapro4j architecture, a Java library for data processing. As can be observed, four components are identified: _Dataset_, _Column_, _Algorithm_ and _Datatypes_. The evaluation of this architectural specification in terms of the three considered design metrics is explained below. 
 
-![Original manually produced architectural design of Datapro4j](https://github.com/aurorarq/EvolArchDiscovery/tree/main/fig/Sbse-rrv14-figure1-manual.jpg)
+![Original manually produced architectural design of Datapro4j](fig/Sbse-rrv14-figure1-manual.jpg)
 Figure 1. Original manually produced architectural design of Datapro4j
 
 As explained in the paper, the three design metrics used to evaluate the design are the following:
@@ -82,7 +82,7 @@ GCR=1.25
 
 After 30 runs of the algorithm with different seeds, the solution returned with the highest fitness value is depicted in Figure 2. 
 
-![Architectural solution produced by the evolutionary algorithm for Datapro4j](https://github.com/aurorarq/EvolArchDiscovery/tree/main/fig/Sbse-rrv14-figure2-algorithm.jpg)
+![Architectural solution produced by the evolutionary algorithm for Datapro4j](fig/Sbse-rrv14-figure2-algorithm.jpg)
 Figure 2. Architectural solution produced by the evolutionary algorithm for Datapro4j
 
 Its values for each individual metric are the following: (these values have been automatically computed and returned by the algorithm):
