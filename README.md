@@ -51,6 +51,13 @@ As explained in the paper, the three design metrics used to evaluate the design 
 
 Firstly, we calculate each of these metrics for the architectural specification created by the software engineer. The ICD metric requires the number of classes, internal relationships and external relationships within each component composing the architecture:
 
+| Component    | Classes | CI<sup>in</sup> | CI<sup>out</sup>|
+| ------       | ------- |------|------|
+| *Dataset*    | 20 | 20 | 1|
+| *Algorithm*  | 14 | 13 | 2|
+| *Column*     | 19 | 18| 1|
+| *Datatypes*  | 6  | 4| 1|
+| **Total**    | 59 | - | - |
 
 Then, the ICD metric is calculated as follows:
 
@@ -68,6 +75,13 @@ ICD = (0.63+0.66+0.64+0.72)/4 = 0.66
 
 Now, the number of external relationships between each pair of components has to be counted in order to calculate the ERP metric:
 
+|     | *Dataset* | *Algorithm* | *Column* | *Datatypes* |
+| ------       | ------- |------|------|------ |
+| *Dataset*    | - | 0 | 1 composition | 0 |
+| *Algorithm*  | - | - | 0 | 0 |
+| *Column*     | - | - | - | 1 aggregation|
+| *Datatypes*  | - | - | - | - |
+
 Then, the ERP value is calculated as follows:
 
 ```
@@ -75,6 +89,13 @@ ERP = (3\*1)+(3\*1) = 6.00
 ```
 
 Finally, the GCR metric is obtained considering the number of groups of classes in each component:
+
+|  Component   | cgroups |
+| ------       | ------- |
+| *Dataset*    | 1 |
+| *Algorithm*  | 1 |
+| *Column*     | 1 |
+| *Datatypes*  | 2 |
 
 Then, the GCR value is calculated as follows:
 
